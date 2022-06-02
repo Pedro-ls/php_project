@@ -1,0 +1,8 @@
+{
+    "php.validate.enable": true,
+    "php.debug.executablePath": "C:\\xampp\\php\\ext\\php_xdebug.dll",
+    "editor.autoIndent": "full",
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "Fira Code Regular Nerd Font Complete Mono Windows Compatible",
+    "editor.fontLigatures": true
+}
