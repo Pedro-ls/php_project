@@ -152,3 +152,13 @@ FROM vendas vn join vendedor vd
 on vd.cod = vn.fk_vendedor_cod
 join cliente cli
 on cli.codigo = vn.fk_cliente_codigo;
+
+
+CREATE VIEW itens_vendas_produto AS
+SELECT 
+iv.fk_vendas_numero as id_venda
+p.nome as p_nome,
+p.preco as p_preco,
+iv.quant_vendida as iv_qtd
+ FROM itens_vendas iv JOIN produtos p
+ON p.cod = iv.fk_produtos_cod;
