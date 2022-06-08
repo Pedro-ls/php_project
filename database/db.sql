@@ -162,3 +162,8 @@ p.preco as p_preco,
 iv.quant_vendida as iv_qtd
  FROM itens_vendas iv JOIN produtos p
 ON p.cod = iv.fk_produtos_cod;
+
+CREATE VIEW filtro_produto AS 
+SELECT
+p.cod, p.nome, p.preco , p.qtd_estoque, p.unidade_medida, c.descricao AS categoria
+FROM produtos p JOIN categoria c ON p.fk_categoria_id  = c.id;
