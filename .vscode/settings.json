@@ -1,8 +1,8 @@
 {
     "php.validate.enable": true,
-    "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+    "php.validate.executablePath": "D:\\Programs\\xampp\\php\\php.exe",
     "editor.autoIndent": "full",
     "editor.formatOnSave": true,
-    "editor.fontFamily": "Arial"',
+    "editor.fontFamily": "FiraCode NF",
     "editor.fontLigatures": true
 }

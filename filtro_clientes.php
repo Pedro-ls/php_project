@@ -1,6 +1,9 @@
 <?php
 include("./lib/connection.php");
-$sql = "SELECT * FROM cliente;";
+
+$nome = $_POST["nome"];
+
+$sql = "SELECT * FROM cliente WHERE nome LIKE '%$nome%';";
 $resul  = mysqli_query($conn, $sql);
 
 ?>
@@ -17,14 +20,9 @@ $resul  = mysqli_query($conn, $sql);
 
 <body>
     <div class="text-center">
-        <h1 class="h1">Listar Clientes</h1>
+        <h1 class="h1">Resultado filtro de Clientes</h1>
     </div>
     <div class="container">
-        <div>
-            <form action="filtro_clientes.php" method="post">
-                <input class="form-control" type="text" name="nome" id="nome" />
-            </form>
-        </div>
         <table class="table">
             <thead>
                 <tr>

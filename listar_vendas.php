@@ -21,13 +21,18 @@ $resul = mysqli_query($conn, $sql);
 </head>
 
 <body>
+    <div>
+        <h1 class="h1 text-center">
+            Listar Vendas
+        </h1>
+    </div>
     <div class="container">
-        <div>
-            <h1 class="h1">
-                Listar Vendas
-            </h1>
-        </div>
 
+        <div>
+            <form+ action="filtro_venda_categoria.php">
+                <input class="form-control" type="text">
+                </form>
+        </div>
         <div>
             <a class="text-capitalize text-primary font-weight-bold" href="./cadastrar_venda.php">Cadastrar Venda</a>
         </div>
@@ -51,16 +56,18 @@ $resul = mysqli_query($conn, $sql);
                 </tr>
             </thead>
             <?php while ($row = mysqli_fetch_array($resul)) { ?>
-                <tr>
+            <tr>
 
-                    <td><?php echo $row["ven_data"]; ?></td>
-                    <td><?php echo $row["cond_pag"]; ?></td>
-                    <td><?php echo $row["prazo"]; ?></td>
-                    <td><?php echo $row["cliente_nome"]; ?></td>
-                    <td><?php echo $row["vendedor_nome"]; ?></td>
-                    <td><a class="btn btn-warning" href="editar_venda.php?id=<?php echo $row["venda_numero"]; ?>">Editar</a></td>
-                    <td><a class="btn btn-danger " href="confirm_exclusao_venda.php?id=<?php echo $row["venda_numero"]; ?>">Apagar</a></td>
-                </tr>
+                <td><?php echo $row["ven_data"]; ?></td>
+                <td><?php echo $row["cond_pag"]; ?></td>
+                <td><?php echo $row["prazo"]; ?></td>
+                <td><?php echo $row["cliente_nome"]; ?></td>
+                <td><?php echo $row["vendedor_nome"]; ?></td>
+                <td><a class="btn btn-warning" href="editar_venda.php?id=<?php echo $row["venda_numero"]; ?>">Editar</a>
+                </td>
+                <td><a class="btn btn-danger "
+                        href="confirm_exclusao_venda.php?id=<?php echo $row["venda_numero"]; ?>">Apagar</a></td>
+            </tr>
             <?php } ?>
         </table>
     </div>
