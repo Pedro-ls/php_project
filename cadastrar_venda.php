@@ -29,8 +29,7 @@ $result_produtos = mysqli_query($conn, $sql_produtos);
     <nav class="navbar navbar-expand-sm navbar-light bg-primary">
         <div class="container-fluid">
             <h1 class="navbar-brand text-light">Pagina Inicial</h1>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
-                aria-controls="navbarID" aria-expanded="false" aria-label="Opções">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Opções">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarID">
@@ -71,7 +70,7 @@ $result_produtos = mysqli_query($conn, $sql_produtos);
                     <select class="form-control" name="vendedor" id="vendedor" required>
                         <?php while ($row = mysqli_fetch_array($result_vendedor)) { ?>
 
-                        <option value="<?php echo $row["cod"]; ?>"><?php echo $row["nome"]; ?></option>
+                            <option value="<?php echo $row["cod"]; ?>"><?php echo $row["nome"]; ?></option>
 
                         <?php } ?>
                     </select>
@@ -86,7 +85,7 @@ $result_produtos = mysqli_query($conn, $sql_produtos);
                     <select class="form-control" name="cliente" id="cliente" required>
                         <?php while ($row = mysqli_fetch_array($result_cliente)) { ?>
 
-                        <option value="<?php echo $row["codigo"]; ?>"><?php echo $row["nome"]; ?></option>
+                            <option value="<?php echo $row["codigo"]; ?>"><?php echo $row["nome"]; ?></option>
 
                         <?php } ?>
                     </select>
@@ -104,7 +103,7 @@ $result_produtos = mysqli_query($conn, $sql_produtos);
                     <select class="form-control" name="item" id="item" required>
                         <?php while ($row = mysqli_fetch_array($result_produtos)) { ?>
 
-                        <option value="<?php echo $row["cod"]; ?>"><?php echo $row["nome"]; ?></option>
+                            <option value="<?php echo $row["cod"]; ?>"><?php echo $row["nome"]; ?></option>
 
                         <?php } ?>
                     </select>
@@ -119,25 +118,25 @@ $result_produtos = mysqli_query($conn, $sql_produtos);
             <button class="my-3 btn btn-primary" type="submit">Adicionar Item</button>
         </form>
         <?php if (!empty($_SESSION["itens"])) { ?>
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>
-                            produto
-                        </td>
-                        <td>
-                            quantidade
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($_SESSION["itens"] as $indice => $value) { ?>
-                    <tr>
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>
+                                produto
+                            </td>
+                            <td>
+                                quantidade
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($_SESSION["itens"] as $indice => $value) { ?>
+                            <tr>
 
-                        <td><?php
+                                <td><?php
                                     echo mysqli_fetch_assoc(
                                         mysqli_query(
                                             $conn,
@@ -145,21 +144,21 @@ $result_produtos = mysqli_query($conn, $sql_produtos);
                                         )
                                     )["nome"];
                                     ?></td>
-                        <td><?php echo $value["qtd"]; ?></td>
-                        <td><a class="btn btn-warning" href="editar_item.php?id=<?php echo $indice; ?>">Editar Item</a>
-                        </td>
-                        <td><a class="btn btn-danger" href="confirm_exclusao_item.php?id=<?php echo $indice; ?>">Remover
-                                Item</a></td>
+                                <td><?php echo $value["qtd"]; ?></td>
+                                <td><a class="btn btn-warning" href="editar_item.php?id=<?php echo $indice; ?>">Editar Item</a>
+                                </td>
+                                <td><a class="btn btn-danger" href="confirm_exclusao_item.php?id=<?php echo $indice; ?>">Remover
+                                        Item</a></td>
 
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         <?php } ?>
     </div>
 
-
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

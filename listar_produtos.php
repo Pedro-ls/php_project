@@ -22,6 +22,24 @@ $resultado = mysqli_query($conn, $sql) or die("Erro ao retornar!");
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <div class="container-fluid">
+            <h1 class="navbar-brand text-light">Pagina Inicial</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Opções">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarID">
+                <div class="navbar-nav">
+                    <a class="nav-link btn btn-primary active text-light" href="./listar_clientes.php">Listar
+                        Clientes</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_produtos.php">Listar Produtos</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_vendas.php">Listar Venda</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_vendedor.php">Listar Vendedor</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_categoria.php">Listar Categoria</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div>
         <h1 class="h1 text-center">Listagem Produtos</h1>
     </div>
@@ -60,16 +78,16 @@ $resultado = mysqli_query($conn, $sql) or die("Erro ao retornar!");
                     $unidade_medida = $registro['unidade_medida'];
                     $categoria = $registro['descricao'];
                 ?>
-                <tr>
-                    <td><?php echo $cod ?></td>
-                    <td><?php echo $nome ?></td>
-                    <td><?php echo $preco ?></td>
-                    <td><?php echo $qtd_estoque ?></td>
-                    <td><?php echo $unidade_medida ?></td>
-                    <td><?php echo $categoria ?></td>
-                    <td><a href="editar_produto.php?id=<?php echo $cod; ?>">Editar</a></td>
-                    <td><a href="confirm_exclusao_produtos.php?id=<?php echo $cod; ?>">Apagar</a></td>
-                </tr>
+                    <tr>
+                        <td><?php echo $cod ?></td>
+                        <td><?php echo $nome ?></td>
+                        <td><?php echo $preco ?></td>
+                        <td><?php echo $qtd_estoque ?></td>
+                        <td><?php echo $unidade_medida ?></td>
+                        <td><?php echo $categoria ?></td>
+                        <td><a href="editar_produto.php?id=<?php echo $cod; ?>">Editar</a></td>
+                        <td><a href="confirm_exclusao_produtos.php?id=<?php echo $cod; ?>">Apagar</a></td>
+                    </tr>
                 <?php
                 }
                 ?>

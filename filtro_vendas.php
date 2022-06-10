@@ -26,6 +26,24 @@ $_SESSION["vendas"] = [
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <div class="container-fluid">
+            <h1 class="navbar-brand text-light">Pagina Inicial</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Opções">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarID">
+                <div class="navbar-nav">
+                    <a class="nav-link btn btn-primary active text-light" href="./listar_clientes.php">Listar
+                        Clientes</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_produtos.php">Listar Produtos</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_vendas.php">Listar Venda</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_vendedor.php">Listar Vendedor</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_categoria.php">Listar Categoria</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div>
         <h1 class="h1 text-center">
             Listar Vendas
@@ -66,18 +84,17 @@ $_SESSION["vendas"] = [
                 </tr>
             </thead>
             <?php while ($row = mysqli_fetch_array($resul)) { ?>
-            <tr>
+                <tr>
 
-                <td><?php echo $row["ven_data"]; ?></td>
-                <td><?php echo $row["cond_pag"]; ?></td>
-                <td><?php echo $row["prazo"]; ?></td>
-                <td><?php echo $row["cliente_nome"]; ?></td>
-                <td><?php echo $row["vendedor_nome"]; ?></td>
-                <td><a class="btn btn-warning" href="editar_venda.php?id=<?php echo $row["venda_numero"]; ?>">Editar</a>
-                </td>
-                <td><a class="btn btn-danger "
-                        href="confirm_exclusao_venda.php?id=<?php echo $row["venda_numero"]; ?>">Apagar</a></td>
-            </tr>
+                    <td><?php echo $row["ven_data"]; ?></td>
+                    <td><?php echo $row["cond_pag"]; ?></td>
+                    <td><?php echo $row["prazo"]; ?></td>
+                    <td><?php echo $row["cliente_nome"]; ?></td>
+                    <td><?php echo $row["vendedor_nome"]; ?></td>
+                    <td><a class="btn btn-warning" href="editar_venda.php?id=<?php echo $row["venda_numero"]; ?>">Editar</a>
+                    </td>
+                    <td><a class="btn btn-danger " href="confirm_exclusao_venda.php?id=<?php echo $row["venda_numero"]; ?>">Apagar</a></td>
+                </tr>
             <?php } ?>
         </table>
     </div>

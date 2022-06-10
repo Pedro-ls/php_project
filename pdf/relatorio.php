@@ -35,30 +35,95 @@ if ($type == "venda") {
 
     $html = "
     <h1 class='h1 text-center'>Relatorio Venda</h1>
-    <div class='container'>
-    <table>
-    <thead>
-        <tr>
-            <th>Condição de Pagamento</th>
-            <th>data</th>
-            <th>prazo de entrega</th>
-            <th>cliente</th>
-            <th>Vendedor</th>
-        </tr>
-    </thead>
+    
     ";
+
+
+
     while ($row = mysqli_fetch_array($resul)) {
-        $html .= '<tbody><tr>
+
+        $html .= "<hr/><h1>Venda</h1><div class='container'>
+        <table class='table'>
+        <thead>
+            <tr>
+             
+                <th>Condição de Pagamento</th>
+                <th>data</th>
+                <th>prazo de entrega</th>
+                <th>cliente</th>
+                <th>Vendedor</th>
+            </tr>
+        </thead>";
+        $html .= "<tbody>";
+        $html .= '<tr>
+      
         <td>' . $row["cond_pag"] . '</td>
     <td>' . $row["ven_data"] . '</td>
    
     <td>' . $row["prazo"] . '</td>
     <td>' . $row["cliente_nome"] . '</td>
     <td>' . $row["vendedor_nome"] . '</td>
-</tr></tbody>';
+</tr>
+</tbody>
+</table>
+
+';
+
+
+
+        $html .=  '    <h1>Itens</h1><table class="table">
+<thead>
+    <tr>
+        <th>
+            ID Venda
+        </th>
+        <th>
+            Produto
+        </th>
+        <th>
+            quantidade do item
+        </th>
+        <th>
+            Preço
+        </th>
+        <th>
+            Total
+        </th>
+    </tr>
+</thead><tbody>';
+
+
+
+        $id = $row["venda_numero"];
+        $sql = "SELECT * FROM itens_vendas_produto
+WHERE id_venda = $id";
+
+        $itens = mysqli_query($conn, $sql);
+
+        while ($row = mysqli_fetch_array($itens)) {
+            $soma = 0;
+            $total_item = $row["iv_qtd"] * $row["p_preco"];
+            $soma =  ($total_item) + $soma;
+            $html .= '            
+       <tr>
+           <td>' . $row["id_venda"] . '</td>
+           <td>' . $row["p_nome"] . '</td>
+           <td>' . $row["iv_qtd"] . '</td>
+           <td>' . $row["p_preco"] . '</td>
+           <td>' . $total_item . '</td>
+
+       </tr>
+';
+        }
+        $html .= "<tbody></table>";
     }
+
+
+
+    $html .= "</tbody>";
     $html .= "</table></div>";
-    generate_pdf($html);
+
+    generate_pdf(body($html));
     unset($_SESSION["vendas"]);
 } else if ($type == "produtos") {
     $pesq_1 = $_SESSION["produtos"][0];
@@ -102,6 +167,7 @@ on c.id = p.fk_categoria_id  WHERE lower( c.descricao) like lower('%$pesq_1%');"
     ' </tbody>
              
            </table></div>';
+
     generate_pdf(body($html));
     unset($_SESSION["produtos"]);
 }

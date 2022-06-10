@@ -26,6 +26,24 @@ $resul = mysqli_fetch_assoc($conn_result);
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <div class="container-fluid">
+            <h1 class="navbar-brand text-light">Pagina Inicial</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Opções">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarID">
+                <div class="navbar-nav">
+                    <a class="nav-link btn btn-primary active text-light" href="./listar_clientes.php">Listar
+                        Clientes</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_produtos.php">Listar Produtos</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_vendas.php">Listar Venda</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_vendedor.php">Listar Vendedor</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_categoria.php">Listar Categoria</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <?php
     if (!empty($_SESSION['msg'])) {
         echo $_SESSION['msg'];
@@ -40,26 +58,22 @@ $resul = mysqli_fetch_assoc($conn_result);
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <div>
             <label>Nome:</label>
-            <input class="form-control" type="text" size="80" name="nome" maxlenght="100" required
-                value="<?php echo $resul["nome"] ?>">
+            <input class="form-control" type="text" size="80" name="nome" maxlenght="100" required value="<?php echo $resul["nome"] ?>">
 
         </div>
         <div>
             <label>Preço: </label>
-            <input class="form-control" type="number" name="preco" min="0" max="100" step=".01" required
-                value="<?php echo $resul["preco"] ?>">
+            <input class="form-control" type="number" name="preco" min="0" max="100" step=".01" required value="<?php echo $resul["preco"] ?>">
 
         </div>
         <div>
             <label>Quantidade no Estoque:</label>
-            <input class="form-control" type="number" name="qtd_estoque" required
-                value="<?php echo $resul["qtd_estoque"] ?>">
+            <input class="form-control" type="number" name="qtd_estoque" required value="<?php echo $resul["qtd_estoque"] ?>">
 
         </div>
         <div>
             <label>Unidade:</label>
-            <input class="form-control" type="number" name="unidade_medida" required
-                value="<?php echo $resul["unidade_medida"] ?>">
+            <input class="form-control" type="number" name="unidade_medida" required value="<?php echo $resul["unidade_medida"] ?>">
 
 
         </div>
@@ -70,7 +84,7 @@ $resul = mysqli_fetch_assoc($conn_result);
 
                 while ($reg = mysqli_fetch_array($resu)) {
                 ?>
-                <option value="<?php echo $reg['id']; ?>"> <?php echo $reg['descricao']; ?></option>
+                    <option value="<?php echo $reg['id']; ?>"> <?php echo $reg['descricao']; ?></option>
                 <?php
                 }
                 mysqli_close($conn);

@@ -16,6 +16,24 @@ $resul  = mysqli_query($conn, $sql);
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <div class="container-fluid">
+            <h1 class="navbar-brand text-light">Pagina Inicial</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Opções">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarID">
+                <div class="navbar-nav">
+                    <a class="nav-link btn btn-primary active text-light" href="./listar_clientes.php">Listar
+                        Clientes</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_produtos.php">Listar Produtos</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_vendas.php">Listar Venda</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_vendedor.php">Listar Vendedor</a>
+                    <a class="mx-2 btn btn-primary active text-light" href="./listar_categoria.php">Listar Categoria</a>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div class="text-center">
         <h1 class="h1">Listar Clientes</h1>
     </div>
@@ -42,22 +60,22 @@ $resul  = mysqli_query($conn, $sql);
             </thead>
             <tbody>
                 <?php while ($row = mysqli_fetch_array($resul)) { ?>
-                <tr>
-                    <td><?php echo $row["nome"];  ?></td>
-                    <td><?php echo $row["endereco"]; ?></td>
-                    <td><?php echo $row["telefone"]; ?></td>
-                    <td><?php echo $row["limite_cred"]; ?></td>
-                    <td><?php echo $row["cidade"]; ?></td>
-                    <td><?php echo $row["email"]; ?></td>
-                    <td><?php echo $row["CPF"]; ?></td>
-                    <td><?php echo $row["estado"]; ?></td>
-                    <td>
-                        <a href="editar_cliente.php?id=<?php echo $row["codigo"]; ?>">Editar</a>
-                    </td>
-                    <td>
-                        <a href="confirm_exclusao_cliente.php?id=<?php echo $row["codigo"]; ?>">Apagar</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?php echo $row["nome"];  ?></td>
+                        <td><?php echo $row["endereco"]; ?></td>
+                        <td><?php echo $row["telefone"]; ?></td>
+                        <td><?php echo $row["limite_cred"]; ?></td>
+                        <td><?php echo $row["cidade"]; ?></td>
+                        <td><?php echo $row["email"]; ?></td>
+                        <td><?php echo $row["CPF"]; ?></td>
+                        <td><?php echo $row["estado"]; ?></td>
+                        <td>
+                            <a href="editar_cliente.php?id=<?php echo $row["codigo"]; ?>">Editar</a>
+                        </td>
+                        <td>
+                            <a href="confirm_exclusao_cliente.php?id=<?php echo $row["codigo"]; ?>">Apagar</a>
+                        </td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
