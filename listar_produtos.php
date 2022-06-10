@@ -45,6 +45,8 @@ $resultado = mysqli_query($conn, $sql) or die("Erro ao retornar!");
                     <th>ESTOQUE</th>
                     <th>UNIDADE</th>
                     <th>CATEGORIA</th>
+                    <td></td>
+                    <td></td>
                 </tr>
 
             </thead>
@@ -65,6 +67,8 @@ $resultado = mysqli_query($conn, $sql) or die("Erro ao retornar!");
                     <td><?php echo $qtd_estoque ?></td>
                     <td><?php echo $unidade_medida ?></td>
                     <td><?php echo $categoria ?></td>
+                    <td><a href="editar_produto.php?id=<?php echo $cod; ?>">Editar</a></td>
+                    <td><a href="confirm_exclusao_produtos.php?id=<?php echo $cod; ?>">Apagar</a></td>
                 </tr>
                 <?php
                 }

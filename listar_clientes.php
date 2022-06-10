@@ -36,6 +36,8 @@ $resul  = mysqli_query($conn, $sql);
                     <th>email</th>
                     <th>CPF</th>
                     <th>estado</th>
+                    <td></td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +51,12 @@ $resul  = mysqli_query($conn, $sql);
                     <td><?php echo $row["email"]; ?></td>
                     <td><?php echo $row["CPF"]; ?></td>
                     <td><?php echo $row["estado"]; ?></td>
+                    <td>
+                        <a href="editar_cliente.php?id=<?php echo $row["codigo"]; ?>">Editar</a>
+                    </td>
+                    <td>
+                        <a href="confirm_exclusao_cliente.php?id=<?php echo $row["codigo"]; ?>">Apagar</a>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>

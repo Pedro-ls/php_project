@@ -14,15 +14,8 @@ $CPF = $_POST["CPF"];
 $estado = $_POST["estado"];
 
 
-$sql = "UPDATE venda SET  
-nome = '$nome',
-endereco = '$endereco',  
-telefone  = '$telefone',
-limite_cred = '$limite_credito',
-cidade = '$cidade',
-email  = '$email',
-CPF = '$CPF',
-estado = '$estado' WHERE codigo = $id;";
+$sql = "UPDATE cliente SET nome='$nome', endereco='$endereco', telefone='$telefone', limite_cred=$limite_credito, cidade='$cidade', email='$email', CPF='$CPF', estado='$estado' WHERE codigo=$id;
+";
 
 $result = mysqli_query($conn, $sql);
 

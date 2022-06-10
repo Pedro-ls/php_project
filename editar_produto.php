@@ -1,10 +1,18 @@
 <?php
 if (session_status() !== PHP_SESSION_ACTIVE) {
-	session_start();
+    session_start();
 }
 include 'lib/connection.php';
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+
+$sql = "SELECT * FROM produtos WHERE cod = $id;";
+
 $query = 'SELECT * FROM categoria ORDER BY descricao';
 $resu = mysqli_query($conn, $query) or die(mysqli_connect_error());
+
+$conn_result = mysqli_query($conn, $sql);
+$resul = mysqli_fetch_assoc($conn_result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,49 +27,54 @@ $resu = mysqli_query($conn, $query) or die(mysqli_connect_error());
 
 <body>
     <?php
-	if (!empty($_SESSION['msg'])) {
-		echo $_SESSION['msg'];
-		unset($_SESSION['msg']);
-	}
+    if (!empty($_SESSION['msg'])) {
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+    }
 
-	?>
+    ?>
 
 
     <h1 class="h1 text-center"> Cadastro - Produto</h1>
-    <form class="form-control" method="POST" action='lib/actions/produto/insert.php'>
+    <form class="form-control" method="POST" action='lib/actions/produto/update.php'>
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
         <div>
             <label>Nome:</label>
-            <input class="form-control" type="text" size="80" name="nome" maxlenght="100" required>
+            <input class="form-control" type="text" size="80" name="nome" maxlenght="100" required
+                value="<?php echo $resul["nome"] ?>">
 
         </div>
         <div>
             <label>Preço: </label>
-            <input class="form-control" type="number" name="preco" min="0" max="100" step=".01" required>
+            <input class="form-control" type="number" name="preco" min="0" max="100" step=".01" required
+                value="<?php echo $resul["preco"] ?>">
 
         </div>
         <div>
             <label>Quantidade no Estoque:</label>
-            <input class="form-control" type="number" name="qtd_estoque" required>
+            <input class="form-control" type="number" name="qtd_estoque" required
+                value="<?php echo $resul["qtd_estoque"] ?>">
 
         </div>
         <div>
             <label>Unidade:</label>
-            <input class="form-control" type="number" name="unidade_medida" required>
+            <input class="form-control" type="number" name="unidade_medida" required
+                value="<?php echo $resul["unidade_medida"] ?>">
 
 
         </div>
         <div>
             <label>Categoria: </label>
-            <select class="form-control" name="categoria">
+            <select class="form-control" name="categoria" value="<?php echo $resul["unidade_medida"] ?>">
                 <?php
 
-				while ($reg = mysqli_fetch_array($resu)) {
-				?>
+                while ($reg = mysqli_fetch_array($resu)) {
+                ?>
                 <option value="<?php echo $reg['id']; ?>"> <?php echo $reg['descricao']; ?></option>
                 <?php
-				}
-				mysqli_close($conn);
-				?>
+                }
+                mysqli_close($conn);
+                ?>
             </select>
         </div>
         <div>

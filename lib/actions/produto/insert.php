@@ -7,10 +7,11 @@ $nome = $_POST["nome"];
 $preco = $_POST["preco"];
 $qtd_estoque = $_POST["qtd_estoque"];
 $unidade_medida = $_POST["unidade_medida"];
+$categoria = $_POST["categoria"];
 
 include('../../connection.php');
 
-$query = "INSERT INTO produtos ( nome, preco, qtd_estoque, unidade_medida) VALUES ('$nome', $preco, '$qtd_estoque', '$unidade_medida');";
+$query = "INSERT INTO produtos ( nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('$nome', $preco, '$qtd_estoque', '$unidade_medida');";
 $resu = mysqli_query($conn, $query);
 
 
