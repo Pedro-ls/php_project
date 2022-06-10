@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("lib/connection.php");
 
 $pesq_1 = $_POST['categoria'];
@@ -8,6 +9,10 @@ $sql = "SELECT * FROM produtos AS p
 join categoria c
 on c.id = p.fk_categoria_id  WHERE lower( c.descricao) like lower('%$pesq_1%');";
 $resultado = mysqli_query($conn, $sql) or die("Erro ao retornar!");
+
+$_SESSION["produtos"] = [
+    $pesq_1
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +29,11 @@ $resultado = mysqli_query($conn, $sql) or die("Erro ao retornar!");
     <h2>
         <h1 class="h1">Resultado Pesquisa</h1>
     </h2>
+    <div class="container">
+        <form action="pdf/relatorio.php" method="post">
+            <button class="btn btn-primary" type="submit" name="type" value="produtos">Criar Relatorio</button>
+        </form>
+    </div>
     <div class="container">
         <div>
             <a class="btn btn-primary" href="listar_produtos.php">Voltar</a>

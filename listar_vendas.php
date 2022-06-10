@@ -28,13 +28,10 @@ $resul = mysqli_query($conn, $sql);
     </div>
     <div class="container">
 
-        <div>
-            <form+ action="filtro_venda_categoria.php">
-                <input class="form-control" type="text">
-                </form>
-        </div>
-        <div>
-            <a class="text-capitalize text-primary font-weight-bold" href="./cadastrar_venda.php">Cadastrar Venda</a>
+
+        <div class="px-4 py-2">
+            <a class="text-capitalize btn btn-primary font-weight-bold" href="./cadastrar_venda.php">Cadastrar
+                Venda</a>
         </div>
         <div>
             <?php
@@ -44,6 +41,27 @@ $resul = mysqli_query($conn, $sql);
             }
             ?>
         </div>
+        <form action="filtro_vendas.php" method="POST">
+            <div class="row">
+                <div class="col">
+                    <div> <label for="from">De: </label></div>
+                    <div> <input class="form-control" type="date" name="from" id="from"></div>
+
+
+                </div>
+                <div class="col">
+                    <div> <label for="to">Até: </label></div>
+                    <div> <input class="form-control" type="date" name="to" id="to"></div>
+
+
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary mt-4">Filtrar</button>
+                </div>
+            </div>
+
+        </form>
+
         <table class="table">
             <thead>
                 <tr>

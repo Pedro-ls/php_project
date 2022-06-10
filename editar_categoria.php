@@ -15,6 +15,7 @@ $row = mysqli_fetch_assoc($resultado);
 </head>
 
 <body>
+
     <h1>Alteração - Categoria</h1>
     <?php
     if (isset($_SESSION['msg'])) {
@@ -24,7 +25,8 @@ $row = mysqli_fetch_assoc($resultado);
 
     ?>
     <form method="POST" action="lib/actions/categoria/update.php">
-        <input type="hidden" name="id" value="<?php echo $row['id']; ?>" ; <p><label>Categoria: </label><input type="text" name="descricao" size="35" value="<?php echo $row['descricao']; ?>">
+        <input type="hidden" name="id" value="<?php echo $row['id']; ?>" ; <p><label>Categoria: </label><input
+            type="text" name="descricao" size="35" value="<?php echo $row['descricao']; ?>">
         <?php
         mysqli_close($conn);
         ?>

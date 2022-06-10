@@ -21,6 +21,7 @@ if ($result) {
 </head>
 
 <body>
+
     <h1 class="h1">Excluir Cliente <?php echo $row["nome"]; ?></h1>
     <?php
     if (isset($_SESSION['msg'])) {
